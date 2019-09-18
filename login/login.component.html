@@ -1,0 +1,22 @@
+<div class="container" style="margin-top: 20px;">
+  <form>
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label text-right">用户名</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" style="width: 300px;display: inline " id="name" name="name" [(ngModel)]="user.name" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="pass" class="col-sm-2 col-form-label text-right">密码</label>
+      <div class="col-sm-6">
+        <input type="password" class="form-control" style="width: 300px;display: inline " id="pass" name="pass" [(ngModel)]="user.pass">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6 offset-2">
+        <button type="submit" class="btn btn-primary" (click)="login()">登录</button>
+      </div>
+    </div>
+  </form>
+</div>

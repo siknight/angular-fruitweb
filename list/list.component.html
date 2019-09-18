@@ -1,0 +1,55 @@
+
+<div class="container">
+  <h2 *ngIf="fruits.length == 0"><a>请添加一种水果</a></h2>
+  <form>
+    <table class="table table-striped"  *ngIf="fruits.length > 0">
+      <thead>
+      <tr>
+        <th scope="col">
+          <input type="checkbox" (click)="selectAll()" [checked]="allselected" />
+        </th>
+        <th scope="col">水果名</th>
+        <th scope="col">价格</th>
+        <th scope="col">产地</th>
+        <th scope="col">进货商</th>
+        <th scope="col">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let fruit of fruits">
+        <td><input type="checkbox" name="id" (click)="select(fruit)"  [checked]="isSelected(fruit)" /></td>
+
+        <th scope="row">
+          <a routerLink="/fruits/{{ fruit.id }}">
+            <span>{{ fruit.name }}</span>
+          </a>
+        </th>
+
+        <td><span> {{ fruit.price }}</span></td>
+        <td><span> {{ fruit.production_place }}</span></td>
+        <td><span> {{ fruit.compony }}</span></td>
+        <td class="pt-2">
+          <button class="btn btn-danger btn-sm mr-1" (click)="deleteFruit(fruit)">删除</button>
+          <a class="btn btn-info btn-sm" routerLink="/update/{{ fruit.id }}">更新</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <button type="button" class="btn btn-info mr-1" (click)="selectAll()" >全选</button>
+    <button type="submit" class="btn btn-danger mr-1" (click)="deleteSeletedFruits()">删除</button>
+    <a routerLink="/add" class="btn btn-primary">添加一种水果</a>
+
+    <nav aria-label="Page navigation example" class="float-right">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link">&lt;&lt;</a></li>
+        <li class="page-item">
+          <a class="page-link">
+            <span></span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link">&gt;&gt;</a></li>
+      </ul>
+    </nav>
+  </form>
+</div>
